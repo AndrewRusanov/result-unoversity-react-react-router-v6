@@ -1,8 +1,10 @@
+import { Navbar } from '@/widgets'
 import { Route, Routes } from 'react-router-dom'
 
 function App() {
   return (
     <div className='app'>
+      <Navbar />
       <main>
         <Routes>
           {/* TODO: добавить роуты */}
