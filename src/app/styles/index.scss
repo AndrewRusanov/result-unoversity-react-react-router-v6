@@ -3,7 +3,9 @@
 
 .app {
   font: var(--font-m);
-  background-color: var(--bg-color);
+  background-color: var(--bg-primary);
   min-height: 100vh;
-  color: var(--text-color);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
 }
