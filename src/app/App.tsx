@@ -1,3 +1,4 @@
+import { Category } from '@/pages/Category'
 import { Navbar } from '@/widgets'
 import { Home } from '@pages/Home'
 import { NotFound } from '@pages/NotFound'
@@ -11,11 +12,17 @@ function App() {
         <Routes>
           {/* TODO: добавить роуты */}
           <Route path='/' element={<Home />} />
-          <Route path='/characters' element={<div>Персонажи</div>} />
+          <Route
+            path='/characters'
+            element={<Category category='characters' />}
+          />
           <Route path='/characters/:id' element={<div>Персонаж с ID</div>} />
-          <Route path='/episodes' element={<div>Эпизоды</div>} />
+          <Route path='/episodes' element={<Category category='episodes' />} />
           <Route path='/episodes/:id' element={<div>Эпизод с ID</div>} />
-          <Route path='/locations' element={<div>Локации</div>} />
+          <Route
+            path='/locations'
+            element={<Category category='locations' />}
+          />
           <Route path='/locations/:id' element={<div>Локация с ID</div>} />
           <Route path='*' element={<NotFound />} />
         </Routes>
