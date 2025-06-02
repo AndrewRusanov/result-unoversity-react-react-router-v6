@@ -1,4 +1,5 @@
 import { Navbar } from '@/widgets'
+import { Home } from '@pages/Home'
 import { Route, Routes } from 'react-router-dom'
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
       <main>
         <Routes>
           {/* TODO: добавить роуты */}
-          <Route path='/' element={<div>Главная</div>} />
+          <Route path='/' element={<Home />} />
           <Route path='/characters' element={<div>Персонажи</div>} />
           <Route path='/characters/:id' element={<div>Персонаж с ID</div>} />
           <Route path='/episodes' element={<div>Эпизоды</div>} />
