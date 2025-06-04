@@ -1,4 +1,5 @@
 import { Category } from '@/pages/Category'
+import { Details } from '@/pages/Details'
 import { Navbar } from '@/widgets'
 import { Home } from '@pages/Home'
 import { NotFound } from '@pages/NotFound'
@@ -16,14 +17,23 @@ function App() {
             path='/characters'
             element={<Category category='characters' />}
           />
-          <Route path='/characters/:id' element={<div>Персонаж с ID</div>} />
+          <Route
+            path='/characters/:id'
+            element={<Details category='characters' />}
+          />
           <Route path='/episodes' element={<Category category='episodes' />} />
-          <Route path='/episodes/:id' element={<div>Эпизод с ID</div>} />
+          <Route
+            path='/episodes/:id'
+            element={<Details category='episodes' />}
+          />
           <Route
             path='/locations'
             element={<Category category='locations' />}
           />
-          <Route path='/locations/:id' element={<div>Локация с ID</div>} />
+          <Route
+            path='/locations/:id'
+            element={<Details category='locations' />}
+          />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </main>

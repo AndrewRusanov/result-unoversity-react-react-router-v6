@@ -27,7 +27,6 @@ const Category: FC<Props> = ({ category }) => {
       } catch (error) {
         setError(`${error}`)
         setLoading(false)
-        console.log(error)
       }
     }
     fetchData()
