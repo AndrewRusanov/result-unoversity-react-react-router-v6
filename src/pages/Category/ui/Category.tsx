@@ -1,4 +1,9 @@
-import { CategoryType } from '@shared/types/categoriesTypes'
+import {
+  CategoryItem,
+  CategoryType,
+  Character,
+  Episode,
+} from '@shared/types/categoriesTypes'
 import { fetchMockData } from '@shared/utils/fetchData'
 import { FC, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
@@ -9,7 +14,7 @@ interface Props {
 }
 
 const Category: FC<Props> = ({ category }) => {
-  const [items, setItems] = useState<any[]>([])
+  const [items, setItems] = useState<CategoryItem[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -31,6 +36,14 @@ const Category: FC<Props> = ({ category }) => {
   if (loading) return <div>Загрузка...</div>
   if (error) return <div>Ошибка загрузки данных: {error}</div>
 
+  const isCharacter = (item: CategoryItem): item is Character => {
+    return (item as Character).image !== undefined
+  }
+
+  const isEpisode = (item: CategoryItem): item is Episode => {
+    return (item as Episode).episode !== undefined
+  }
+
   return (
     <div className={styles.category}>
       <h1 className={styles.title}>
@@ -43,7 +56,7 @@ const Category: FC<Props> = ({ category }) => {
             to={`/${category}/${item.id}`}
             className={styles.card}
           >
-            {category === 'characters' && (
+            {isCharacter(item) && (
               <>
                 <img
                   src={item.image}
@@ -54,14 +67,14 @@ const Category: FC<Props> = ({ category }) => {
                 <p>Вид: {item.species}</p>
               </>
             )}
-            {category === 'episodes' && (
+            {isEpisode(item) && (
               <>
                 <h2 className={styles.subtitle}>{item.name}</h2>
                 <p className={styles.text}>Эпизод: {item.episode}</p>
                 <p className={styles.text}>Дата выхода: {item.air_date}</p>
               </>
             )}
-            {category === 'locations' && (
+            {!isCharacter(item) && !isEpisode(item) && (
               <>
                 <h2 className={styles.subtitle}>{item.name}</h2>
                 <p className={styles.text}>Тип: {item.type}</p>

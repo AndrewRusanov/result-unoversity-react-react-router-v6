@@ -1,5 +1,6 @@
 export type CategoryType = 'characters' | 'locations' | 'episodes'
 
+export type CategoryItem = Character | Episode | Location
 export interface Character {
   id: number
   name: string
